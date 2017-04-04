@@ -28,14 +28,14 @@ First step is clone the repository by typing
 Primeiro passo é clonar o repostiório
 
 ```
-git clone https://github.com/jrvlima-puc/web-mobile-2016.git
+git clone https://github.com/jrvlima-puc/web-mobile-puc.git
 ```
 After complete, go inside the project you've just cloned
 
 Depois de ter completado entre no diretório que acabou de clonar
 
 ```
-cd web-mobile-2016
+cd web-mobile-puc
 ```
 
 Now use npm to install all node dependencies that's in package.json
@@ -93,7 +93,7 @@ Abaixo estrutura do projeto comentada.
 ├── client -- frontend - tarefa grunt, em watch sincroniza server/public
 │   ├── coursepages - material didático
 │   │   └── images
-│   ├── exercicios-2016 - exercícios comitados por alunos
+│   ├── exercicios-puc - exercícios comitados por alunos
 │   │   └── exercicio-1
 │   │       └── rubensagnelo
 │   ├── puc-apps - diretório onde devem estar os trabalhos
