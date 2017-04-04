@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
     "use strict";
 
-    grunt.registerTask("default", ["copy", "concurrent:target"]);
+    grunt.registerTask("default", ["handlebars", "copy", "concurrent:target"]);
 
 };
