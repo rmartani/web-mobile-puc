@@ -6,7 +6,7 @@ module.exports = function(config) {
 
 
     basePath: './',
-    frameworks: ["jasmine-jquery", "jasmine-ajax", "jasmine"],
+    frameworks: ["jasmine-jquery", "jasmine-ajax", "jasmine", "sinon"],
     exclude: [
     ],
 
@@ -15,6 +15,10 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
     },
+
+    files: [
+      'client/components/jquery/dist/jquery.js'
+    ],
 
 
     // test results reporter to use

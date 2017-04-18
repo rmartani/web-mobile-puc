@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <title>Teste</title>
     <link rel="stylesheet" href="css/simple.css" media="screen" title="no title" charset="utf-8">
-    <script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js" type="text/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -21,50 +19,11 @@
       </div>
     </article>
 
-    <div class="templates">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js" type="text/javascript"></script>
+    <script src="js/templates/users/list-users.js" type="text/javascript"></script>
 
-      <script id="list-users-template" type="text/x-handlebars-template">
-
-        <h3>List Users</h3>
-
-          <div class="row hidden-xs row hidden-xs table-header desktop-row-header">
-            <div class="col-12 " >
-              <div class="row">
-                    <div class="hidden-xs col-3">Nome</div>
-                  	<div class="hidden-xs col-3">Email</div>
-                  	<div class="hidden-xs col-3">Sexo</div>
-                  	<div class="hidden-xs col-3">Ações</div>
-              </div>
-            </div>
-          </div>
-
-          {{#each users}}
-            <div class="row desktop-row">
-              <div class="col-sm-3 visible-xs">
-                <div class="row list-header">
-                  <div class="col-sm-12 visible-xs">Nome</div>
-                  <div class="col-sm-12 visible-xs">Email</div>
-                  <div class="col-sm-12 visible-xs">Sexo</div>
-                  <div class="col-sm-12 visible-xs"></div>
-                </div>
-              </div>
-
-              <div class="col-12 col-sm-9" >
-                <div class="row">
-                  <div class="col-sm-12 col-3 user-info">{{name}}</div>
-                  <div class="col-sm-12 col-3 user-info">{{email}}</div>
-                  <div class="col-sm-12 col-3 user-info">{{gender}}</div>
-                  <div class="col-sm-12 col-3 list-actions"></div>
-                </div>
-              </div>
-            </div>
-          {{/each}}
-
-      </script>
-
-    </div>
-
+    <script src="js/config.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript" ></script>
-    
   </body>
 </html>

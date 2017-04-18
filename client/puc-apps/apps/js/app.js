@@ -1,9 +1,29 @@
-$(function() {
+var App = window.App || {};
+App.modules = App.modules || {};
 
-    var CrudUser = function() {
+App.modules.CrudUser = (function() {
 
-        },
-        crudUser;
+    /**
+     * Esse método é utilizado para executar as requisição ajax
+     *
+     * @param {string} method - envia uma string com o método HTTP - eg: 'GET', 'POST'
+     * @param {render} render
+     * @param {error} error
+     * @param {string} params - Request parameters - eg: /users/9823498273
+     *
+     */
+    var makeAjaxRequest = function(method, render, error, params) {
+        $.ajax({
+            url: "/api/users" + (params ? ("/" + params) : ""),
+            method: method,
+            success: function(data) {
+                render(data);
+            },
+            error: function(data) {
+                error(data);
+            }
+        });
+    }
 
     /**
      * @method renderUserList
@@ -17,9 +37,12 @@ $(function() {
      * - chamar o método responsável por requisições ajax
      *
      */
-    CrudUser.prototype.renderUserList = function() {
-        var source = $("#list-users-template").html(),
-            template = Handlebars.compile(source),
+    var renderUserList = function() {
+
+        var template =
+            (App.CONFIG.cssType === 'simple' ? App.Templates['client/puc-apps/apps/js/templates/users/list-users.hbs'] :
+                App.Templates['client/puc-apps/apps/js/templates/users/list-users-material.hbs']),
+            that = this,
             html;
 
         /**
@@ -42,75 +65,61 @@ $(function() {
         };
 
         var registryEvents = function() {
-            $("#add-user").on('click', this.renderCreateUser());
-            $("#delete-user").on('click', this.deleteUser());
-            $("#show-user").on('click', this.showUser());
+            $("#add-user").on('click', that.renderCreateUser());
+            $("#delete-user").on('click', that.deleteUser());
+            $("#show-user").on('click', that.renderUser());
         };
 
-        this.makeAjaxRequest('GET', render, error);
+        makeAjaxRequest('GET', render, error);
     };
 
 
     /**
      * Implementar método para mostrar um usuário
      */
-    CrudUser.prototype.renderUser = function() {
+    var renderUser = function() {
 
     };
 
     /**
      * Implementar método para renderizar form
      */
-    CrudUser.prototype.renderCreateUser = function() {
+    var renderCreateUser = function() {
 
     };
 
     /**
      * Implementar método para salvar um usuário, action do button submit
      */
-    CrudUser.prototype.saveUser = function() {
+    var saveUser = function() {
 
     };
 
     /**
      * Implementar método para remover um usuário, action do link delete
      */
-    CrudUser.prototype.deleteUser = function() {
+    var deleteUser = function() {
 
     };
-
-    /**
-     * Esse método é utilizado para executar as requisição ajax
-     *
-     * @param {string} method - envia uma string com o método HTTP - eg: 'GET', 'POST'
-     * @param {render} render
-     * @param {error} error
-     * @param {string} params - Request parameters - eg: /users/9823498273
-     *
-     */
-    CrudUser.prototype.makeAjaxRequest = function(method, render, error, params) {
-        $.ajax({
-            url: "/api/users" + (params? ("/" + params): ""),
-            method: method,
-            success: function(data) {
-                render(data);
-            },
-            error: function(data) {
-                error(data);
-            }
-        });
-    }
 
     /**
      * Esse método é chamado para inicializar a página
      * HOME que no nosso caso é a lista de usuários
      */
-    CrudUser.prototype.init = function() {
+    var init = function() {
         this.renderUserList();
     }
 
-    crudUser = new CrudUser();
+    return {
+        init: init,
+        renderUserList: renderUserList,
+        renderUser: renderUser,
+        renderCreateUser: renderCreateUser,
+        deleteUser: deleteUser
+    }
 
-    crudUser.init();
+})();
 
+$(function() {
+    App.modules.CrudUser.init();
 });
